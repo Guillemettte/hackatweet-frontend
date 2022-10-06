@@ -1,4 +1,6 @@
+import 'antd/dist/antd.css';
 import styles from '../styles/Home.module.css';
+import { Popover, Button } from 'antd';
 
 function Home() {
   return (
