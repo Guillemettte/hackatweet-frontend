@@ -4,9 +4,29 @@ import { Popover, Button } from 'antd';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {tweeter } from '../reducers/tweet';
 
 
 function LastTweets() {
+
+    const [tweetData, setTweetData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/tweets')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data.data)
+           setTweetData(data.data.filter((data, i) => i >= 0));
+          });
+      }, []);
+    
+      const tweets = tweetData.map(data, i)
+    //   => {};
+    //    return <Tweet key={i} {...data} />;
+      
+
 return (
     <div>
         <div className={styles.infos}>
@@ -20,6 +40,7 @@ return (
             <div className={styles.actions}>
         <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} /><span>0</span>
         <FontAwesomeIcon icon={faTrash} className={styles.trashIcon} />
+        {tweets}
         </div>
         </div>
     </div>
