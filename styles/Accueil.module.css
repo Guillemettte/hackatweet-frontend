@@ -1,0 +1,56 @@
+
+  
+.container {
+    color: black;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+.contentleft {
+    grid-row-start: 1;
+    grid-row-end: 13;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    background-color: black;
+    color: white;
+  }
+  
+.contentmilieu {
+    grid-row-start: 1;
+    grid-row-end: 13;
+    grid-column-start: 4;
+    grid-column-end: 9;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+.contentright {
+    grid-row-start: 1;
+    grid-row-end: 13;
+    grid-column-start: 9;
+    grid-column-end: 13;
+    background-color: black;
+    color: white;
+  }
+
+  .petitlogo {
+    width: 30px ;
+    height: 30px;
+  }
+
+  .btntweet {
+    width: 100px ;
+    height: 30px;
+
+  }
+  .btnlogout{
+    width: 100px ;
+    height: 30px;
+
+  }
