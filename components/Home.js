@@ -2,22 +2,26 @@ import 'antd/dist/antd.css';
 import styles from '../styles/Home.module.css';
 import { Popover, Button } from 'antd';
 import Link from 'next/link';
+import Signup from './Signup';
+import Signin from './Signin';
 
 
 function Home() {
   return (
     <div className={styles.main}>
       <div className={styles.gauche}>
-       <img src='twitter.png' className={styles.groslogo}/>
+      <img src='twitter.png' className={styles.groslogo}/>
       </div>  
       <div className={styles.droite} >
         <img src='twitter.png' className={styles.petitlogo}/>
-        <span>See what's</span>
-        <span>happening</span>
-        <span>Join Hackatweet today</span>
-        <button type="button" className={styles.boutonsignup}>Sign up</button>
-        <span>already have an account?</span>
-        <button type="button" className={styles.boutonsignin}>Sign in</button>
+        <div className={styles.titre}>
+        <div>See what's</div>
+        <div>happening</div>
+        </div>
+        <span className={styles.join}>Join Hackatweet today</span>
+        <Signup/>
+        <span className={styles.already}>Already have an account?</span>
+        <Signin/>
         <Link href = "/accueil"> go to accueil</Link> 
       </div>
     </div>

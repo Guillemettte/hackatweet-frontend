@@ -1,0 +1,10 @@
+.boutonsignup {
+    margin: 30px;
+    border-radius: 25px;
+    background-color: #119afb;
+    border-color: #119afb;
+    width: 150px;
+    cursor: pointer;
+    height: 40px;
+    font-size: 20px;
+}
