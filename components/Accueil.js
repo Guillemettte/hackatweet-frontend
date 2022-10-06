@@ -1,10 +1,10 @@
 import 'antd/dist/antd.css';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Accueil.module.css';
 import { Popover, Button } from 'antd';
 import Link from 'next/link';
 
 
-function Home() {
+function Accueil() {
   return (
     <div className={styles.main}>
       <div className={styles.gauche}>
@@ -24,4 +24,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Accueil;
