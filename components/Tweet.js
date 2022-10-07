@@ -6,10 +6,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {tweeter } from '../reducers/tweet';
 import{login} from '../reducers/user';
+import ModelTweet from './ModelTweet';
 
 
 function Tweet() {
 
+    const user = useSelector((state) => state.user.value);
+    const [tweetData, setTweetData] = useState([]);
     const dispatch = useDispatch();
     const token = useSelector((state) => state.user.value.token);
     const firstname = useSelector((state) => state.user.value.firstname);
@@ -18,6 +21,8 @@ function Tweet() {
     // const tweet = useSelector((state) => state.tweet.value);
     const [tweetsaisi, setTweetsaisi] = useState('');
 
+
+    //SAISIE DU TWEET
     const handleTweet = () => {
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
@@ -38,6 +43,23 @@ function Tweet() {
             });
         }  
 
+//AFFICHAGE DES TWEETS
+
+        useEffect(() => {
+            fetch('http://localhost:3000/tweets')
+              .then(response => response.json())
+              .then(data => {
+                console.log(data.data)
+               setTweetData(data.data.filter((data, i) => i >= 0));
+              });
+          }, []);
+        
+          const tweetsrev = tweetData.map((data, i)=> {
+            return <ModelTweet key={i} {...data} />;
+          });
+    
+          const tweets=tweetsrev.reverse()
+
 
 
 return (
@@ -49,6 +71,12 @@ return (
         <div className={styles.tweetinfos}>
             <span>tweetsaisi.maxLength/280</span>
             <button type="button" className={styles.btntweet} onClick={() => handleTweet()}>Tweet</button>
+        </div>
+    
+        <div className= {styles.tweetcontainer}>
+            
+        {tweets}
+        
         </div>
     </div>
 );

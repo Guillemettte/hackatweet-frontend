@@ -38,9 +38,9 @@ function Accueil() {
         <div className={styles.contentmilieuhaut}>
         <Tweet/>
         </div>
-        <div className={styles.contentmilieubas}>
+        {/* <div className={styles.contentmilieubas}>
         <LastTweets/>
-        </div>
+        </div> */}
         </div>
         <div className={styles.contentright}>
         <Trends/>

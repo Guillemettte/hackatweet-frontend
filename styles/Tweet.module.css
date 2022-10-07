@@ -37,3 +37,8 @@
     width: 470px;
     color:black;
 }
+
+.tweetcontainer {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
