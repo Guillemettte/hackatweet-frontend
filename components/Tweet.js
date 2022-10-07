@@ -24,8 +24,10 @@ function Tweet() {
 
     //SAISIE DU TWEET
     
+    const [count, setCount] = useState(0)
+    // const likes = useSelector((state) => state.value)
+
     const handleTweet = () => {
-        let count = 0;
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -36,7 +38,7 @@ function Tweet() {
                 if (data.result) {
                     dispatch(tweeter({ tweet: tweetsaisi}));
                     setTweetsaisi('');
-                    count = count+1;
+                    setCount(count+1);
                     console.log(count)
                     // dispatch(login({ token: token}));
                 }else {
@@ -60,6 +62,7 @@ function Tweet() {
         }, [count]);
         
         const tweetsrev = tweetData.map((data, i)=> {
+            // const isLiked = 
             return <ModelTweet key={i} {...data} />;
         });
     
@@ -75,7 +78,7 @@ return (
         <label for="tweet">What's up? </label>
         <input type="text" name="tweet" maxLength="280" className={styles.input} onChange={(e) => setTweetsaisi(e.target.value)} value={tweetsaisi} /></div>
         <div className={styles.tweetinfos}>
-            <span>tweetsaisi.maxLength/280</span>
+            <span>{tweetsaisi.length}/280</span>
             <button type="button" className={styles.btntweet} onClick={() => handleTweet()}>Tweet</button>
         </div>
         </div>
