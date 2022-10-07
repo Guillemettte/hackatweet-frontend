@@ -7,10 +7,13 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {tweeter } from '../reducers/tweet';
+import Tweet from './Tweet';
+import ModelTweet from './ModelTweet';
 
 
 function LastTweets() {
 
+    const user = useSelector((state) => state.user.value);
     const [tweetData, setTweetData] = useState([]);
 
     useEffect(() => {
@@ -22,27 +25,23 @@ function LastTweets() {
           });
       }, []);
     
-      const tweets = tweetData.map(data, i)
-    //   => {};
-    //    return <Tweet key={i} {...data} />;
+      const tweetsrev = tweetData.map((data, i)=> {
+        return <ModelTweet key={i} {...data} />;
+      });
+
+      const tweets=tweetsrev.reverse()
+       
+    // const articles = articlesData.map((data, i) => {
+     
+    //     return <Article key={i} {...data} isBookmarked={isBookmarked} />;
+    //   });
       
 
 return (
-    <div>
-        <div className={styles.infos}>
-        <img src='Picto_Traffic_User.png' className={styles.picto}/>
-        <span className={styles.firstname}>Firstname</span>
-        <span className={styles.username}>@Username</span>
-        <span className={styles.time}>- X hours</span>
-        </div>
-        <div className={styles.tweet}>
-            <div>Welcome to #hackatweet guys!</div>
-            <div className={styles.actions}>
-        <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} /><span>0</span>
-        <FontAwesomeIcon icon={faTrash} className={styles.trashIcon} />
+    <div className= {styles.tweetcontainer}>
+        
         {tweets}
-        </div>
-        </div>
+        
     </div>
 );
 }

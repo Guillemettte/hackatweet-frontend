@@ -43,8 +43,3 @@
     display: flex;
     margin-top: 10px;
 }
-
-.tweetcontainer {
-    overflow-x: hidden;
-    overflow-y: auto;
-}

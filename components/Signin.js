@@ -47,15 +47,13 @@ const [open, setOpen] = useState(false);
 return (
     <div>
         <button type="button" onClick={() => handleOpen()} className={styles.boutonsignin}>Sign in</button>
-        <Modal open={open}>
-            <div className={styles.registerContainer}>
-                <div className={styles.registerSection}>
+        <Modal open={open} portalClassName="modal">
+            
                     <p>Sign-in</p>
                     <input type="text" placeholder="Username" id="signInUsername" onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} />
                     <input type="password" placeholder="Password" id="signInPassword" onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} />
                     <button id="connection" onClick={() => handleConnection()}>Connect</button>
-                </div>
-            </div>
+              
         </Modal>
     </div>
     
