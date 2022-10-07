@@ -23,7 +23,9 @@ function Tweet() {
 
 
     //SAISIE DU TWEET
+    
     const handleTweet = () => {
+        let count = 0;
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -34,36 +36,40 @@ function Tweet() {
                 if (data.result) {
                     dispatch(tweeter({ tweet: tweetsaisi}));
                     setTweetsaisi('');
+                    count = count+1;
+                    console.log(count)
                     // dispatch(login({ token: token}));
                 }else {
     
-          console.log("marche pas")
+        console.log("marche pas")
     
         }
             });
-        }  
+        }
 
 //AFFICHAGE DES TWEETS
 
+
         useEffect(() => {
             fetch('http://localhost:3000/tweets')
-              .then(response => response.json())
-              .then(data => {
+            .then(response => response.json())
+            .then(data => {
                 console.log(data.data)
-               setTweetData(data.data.filter((data, i) => i >= 0));
-              });
-          }, []);
+            setTweetData(data.data.filter((data, i) => i >= 0));
+            });
+        }, [count]);
         
-          const tweetsrev = tweetData.map((data, i)=> {
+        const tweetsrev = tweetData.map((data, i)=> {
             return <ModelTweet key={i} {...data} />;
-          });
+        });
     
-          const tweets=tweetsrev.reverse()
+        const tweets=tweetsrev.reverse()
 
-
+    
 
 return (
     <div>
+        <div className={styles.haut}>
         <div className={styles.titre}>Home</div>
         <div className={styles.tweet}>
         <label for="tweet">What's up? </label>
@@ -72,7 +78,7 @@ return (
             <span>tweetsaisi.maxLength/280</span>
             <button type="button" className={styles.btntweet} onClick={() => handleTweet()}>Tweet</button>
         </div>
-    
+        </div>
         <div className= {styles.tweetcontainer}>
             
         {tweets}

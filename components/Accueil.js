@@ -34,14 +34,12 @@ function Accueil() {
         <button type="button" onClick={() => handlelogout()} className={styles.btnlogout}>Logout</button>
         </div>
         </div>
-        <div className={styles.contentmilieu}>
         <div className={styles.contentmilieuhaut}>
         <Tweet/>
         </div>
         {/* <div className={styles.contentmilieubas}>
         <LastTweets/>
         </div> */}
-        </div>
         <div className={styles.contentright}>
         <Trends/>
         </div>

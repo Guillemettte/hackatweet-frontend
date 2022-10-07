@@ -24,16 +24,17 @@
     color: white;
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 100Vh;
     width:50vw;
     border-left-style: solid;
     border-block-end-style: solid;
     border-width: 1px;
     border-color: white;
 
+
   }
 
-  .contentmilieubas {
+  /* .contentmilieubas {
     background-color: #0a2345;
     color: white;
     display: flex;
@@ -44,7 +45,7 @@
     border-width: 1px;
     border-color: white;
 
-  }
+  } */
 
 
 .contentright {
